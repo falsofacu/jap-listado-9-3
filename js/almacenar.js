@@ -3,6 +3,7 @@ function mostrarLista(arr) {
   contenedorElement.innerHTML = "";
   arr.forEach((element) => {
     const li = document.createElement("li");
+    li.className = "list-group-item";
     li.appendChild(document.createTextNode(element));
     contenedorElement.appendChild(li);
   });
