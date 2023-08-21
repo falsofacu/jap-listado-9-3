@@ -1,4 +1,4 @@
-function mostrarLista(arr) {
+function actualizarLista(arr) {
   const contenedorElement = document.getElementById("contenedor");
   contenedorElement.innerHTML = "";
   arr.forEach((element) => {
@@ -23,17 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonLimpiar = document.getElementById("limpiar");
 
   let lista = JSON.parse(localStorage.getItem("data")) || [];
-  mostrarLista(lista);
+  actualizarLista(lista);
 
   buttonAgregar.addEventListener("click", () => {
     agregarElemento(lista, inputElement.value)
-    mostrarLista(lista);
+    actualizarLista(lista);
     guardarArr(lista);
   });
 
   botonLimpiar.addEventListener("click", () => {
     localStorage.removeItem("data");
     lista = [];
-    mostrarLista(lista);
+    actualizarLista(lista);
   });
 });
