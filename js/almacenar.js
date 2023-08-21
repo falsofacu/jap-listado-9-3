@@ -1,4 +1,4 @@
-function showList(arr) {
+function mostrarLista(arr) {
   const contenedorElement = document.getElementById("contenedor");
   contenedorElement.innerHTML = "";
   arr.forEach((element) => {
@@ -12,23 +12,27 @@ function guardarArr(arr) {
   localStorage.setItem("data", JSON.stringify(arr));
 }
 
+function agregarElemento(arr, valor) {
+  arr.push(valor);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const inputElement = document.getElementById("item");
   const buttonAgregar = document.getElementById("agregar");
   const botonLimpiar = document.getElementById("limpiar");
 
   let lista = JSON.parse(localStorage.getItem("data")) || [];
-  showList(lista);
+  mostrarLista(lista);
 
   buttonAgregar.addEventListener("click", () => {
-    lista.push(inputElement.value);
-    showList(lista);
+    agregarElemento(lista, inputElement.value)
+    mostrarLista(lista);
     guardarArr(lista);
   });
 
   botonLimpiar.addEventListener("click", () => {
     localStorage.removeItem("data");
     lista = [];
-    showList(lista);
+    mostrarLista(lista);
   });
 });
